@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+     compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+    defaultConfig {
+        applicationId "com.example.apk_extractor"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // snippets
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+        // snippets
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // snippets
+    /*
+    flavorDimensions "default"
+    productFlavors {
+        pro {
+            applicationId = "com.javiersantos.mlmanagerpro"
+        }
+        basic {
+            //applicationId = "com.javiersantos.mlmanager"
+            applicationId = "com.example.filemanager"
+            //applicationId = "com.javiersantos.mlmanagerpro"
+        }
+    }
+
+     */
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    // snippets
+}
+
+// snippets
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url 'http://guardian.github.com/maven/repo-releases' }
+    maven { url "https://jitpack.io" }
+}
+// snippets
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // snipets
+
+    implementation 'commons-io:commons-io:2.5'
+    implementation 'com.github.navasmdc:MaterialDesign:1.5@aar'
+    implementation 'com.getbase:floatingactionbutton:1.10.1'
+    implementation('com.github.afollestad.material-dialogs:core:0.8.5.3@aar') { transitive = true; }
+    implementation('com.github.afollestad.material-dialogs:commons:0.8.5.3@aar') { transitive = true; }
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
+    implementation 'com.pnikosis:materialish-progress:1.7'
+    implementation 'xyz.danoz:recyclerviewfastscroller:0.1.3'
+    implementation 'com.yalantis:phoenix:1.2.2'
+    implementation('com.mikepenz:materialdrawer:4.6.1@aar') { transitive = true; }
+    implementation 'com.mikepenz:google-material-typeface:1.2.0.1@aar'
+    implementation('net.rdrei.android.dirchooser:library:3.0@aar') { transitive = true; }
+    implementation('com.mikepenz:aboutlibraries:5.2.1@aar') { transitive = true; }
+
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+
+    annotationProcessor 'com.google.auto.value:auto-value:1.5.2'
+
+}
